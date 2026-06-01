@@ -170,8 +170,10 @@ plataforma el directorio correcto y que use pnpm con corepack.
    node apps/api/dist/main.js
    ```
 5. **Variables de entorno:** `DATABASE_URL`, `JWT_SECRET`, `INTERNAL_API_SECRET`.
-   Si Render no usa pnpm por defecto, añade `PNPM_VERSION=9.1.0`.
-6. La API queda expuesta en una URL tipo `https://tu-api.onrender.com`. El endpoint
+6. **Versión de Node:** el repo incluye un archivo `.node-version` con `20.18.1`.
+   Es importante NO usar Node 24: NestJS 9 utiliza APIs que Node 24 ya removió y el
+   build falla con `(0, util_1.isObject) is not a function`.
+7. La API queda expuesta en una URL tipo `https://tu-api.onrender.com`. El endpoint
    GraphQL es esa URL + `/graphql`.
 
 Nota: el `migrate deploy` del build aplica las migraciones en la base de Supabase.
@@ -182,9 +184,14 @@ o localmente apuntando `DATABASE_URL` a Supabase).
 ### 3. Frontend - Vercel
 
 1. Importa el repositorio en Vercel.
-2. **Framework Preset:** Next.js.
-3. **Root Directory:** `apps/web` (Vercel detecta el `pnpm-workspace.yaml` e instala
-   desde la raíz automáticamente).
+2. **Root Directory:** `apps/web`.
+3. El repo incluye `apps/web/vercel.json` que fuerza pnpm y Next.js:
+   ```json
+   { "framework": "nextjs", "installCommand": "pnpm install", "buildCommand": "next build" }
+   ```
+   Esto evita que la autodetección de Nx use `npm install --prefix=../..` (que falla
+   con "No Next.js version detected", porque npm no entiende las dependencias
+   `workspace:*`).
 4. **Variables de entorno:** `NEXT_PUBLIC_API_URL` (apuntando al `/graphql` de Render),
    `NEXT_PUBLIC_MAPBOX_TOKEN`, `GOOGLE_CLIENT_ID`, `GOOGLE_CLIENT_SECRET`,
    `NEXTAUTH_SECRET`, `NEXTAUTH_URL`.
@@ -193,8 +200,7 @@ o localmente apuntando `DATABASE_URL` a Supabase).
 
 > Importante: este es un proyecto **pnpm**. No debe existir `package-lock.json`
 > en el repo; si aparece, Vercel asumirá npm e instalará desde la raíz, fallando
-> con "No Next.js version detected". El campo `packageManager` del `package.json`
-> raíz fija pnpm para todas las plataformas.
+> con "No Next.js version detected".
 
 ### Orden recomendado   
 
