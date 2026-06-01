@@ -1,0 +1,163 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+    provider = "prisma-client-js"
+}
+
+datasource db {
+    provider = "postgresql"
+    url      = env("DATABASE_URL")
+}
+
+model User {
+    uid       String   @id
+    createdAt DateTime @default(now())
+    updatedAt DateTime @updatedAt
+
+    name  String?
+    image String?
+
+    Credentials  Credentials?
+    AuthProvider AuthProvider?
+    Manufacturer Manufacturer?
+    Distributor  Distributor?
+    Retailer     Retailer?
+
+    Admin Admin?
+}
+
+model Credentials {
+    uid  String @id
+    user User   @relation(fields: [uid], references: [uid])
+
+    email        String @unique
+    passwordHash String
+
+    createdAt DateTime @default(now())
+    updatedAt DateTime @updatedAt
+}
+
+model AuthProvider {
+    uid  String @id
+    user User   @relation(fields: [uid], references: [uid])
+
+    type AuthProviderType
+}
+
+enum AuthProviderType {
+    GOOGLE
+    CREDENTIALS
+}
+
+model Admin {
+    uid  String @id
+    user User   @relation(fields: [uid], references: [uid])
+}
+
+model Manufacturer {
+    uid  String @id
+    user User   @relation(fields: [uid], references: [uid])
+
+    createdAt  DateTime    @default(now())
+    updatedAt  DateTime    @updatedAt
+    Products   Product[]
+    Warehouses Warehouse[]
+}
+
+model Distributor {
+    uid  String @id
+    user User   @relation(fields: [uid], references: [uid])
+
+    createdAt  DateTime    @default(now())
+    updatedAt  DateTime    @updatedAt
+    Warehouses Warehouse[]
+}
+
+model Retailer {
+    uid  String @id
+    user User   @relation(fields: [uid], references: [uid])
+
+    createdAt  DateTime    @default(now())
+    updatedAt  DateTime    @updatedAt
+    Warehouses Warehouse[]
+}
+
+model Product {
+    id        Int      @id @default(autoincrement())
+    createdAt DateTime @default(now())
+    updatedAt DateTime @updatedAt
+
+    name        String
+    description String?
+    image       String?
+
+    Manufacturer   Manufacturer  @relation(fields: [manufacturerId], references: [uid])
+    manufacturerId String
+    Inventories    Inventory[]
+    Transactions   Transaction[]
+}
+
+model Warehouse {
+    id Int @id @default(autoincrement())
+
+    createdAt   DateTime  @default(now())
+    updatedAt   DateTime  @updatedAt
+    name        String
+    description String?
+    location    Location?
+
+    manufacturerId String?
+    Manufacturer   Manufacturer? @relation(fields: [manufacturerId], references: [uid])
+
+    distributorId String?
+    Distributor   Distributor? @relation(fields: [distributorId], references: [uid])
+
+    retailerId  String?
+    Retailer    Retailer?   @relation(fields: [retailerId], references: [uid])
+    Inventories Inventory[]
+
+    outs Transaction[] @relation("FromWarehouse")
+    ins  Transaction[] @relation("ToWarehouse")
+}
+
+model Location {
+    id        Int    @id @default(autoincrement())
+    latitude  Float
+    longitude Float
+    address   String
+
+    Warehouse   Warehouse @relation(fields: [warehouseId], references: [id])
+    warehouseId Int       @unique
+}
+
+model Inventory {
+    id Int @id @default(autoincrement())
+
+    createdAt DateTime @default(now())
+    updatedAt DateTime @updatedAt
+
+    productId   Int
+    product     Product   @relation(fields: [productId], references: [id])
+    warehouseId Int
+    warehouse   Warehouse @relation(fields: [warehouseId], references: [id])
+
+    quantity Int
+}
+
+model Transaction {
+    id        Int      @id @default(autoincrement())
+    createdAt DateTime @default(now())
+    updatedAt DateTime @updatedAt
+
+    productId Int
+    product   Product @relation(fields: [productId], references: [id])
+
+    fromWarehouseId Int?
+    fromWarehouse   Warehouse? @relation("FromWarehouse", fields: [fromWarehouseId], references: [id])
+
+    toWarehouseId Int?
+    toWarehouse   Warehouse? @relation("ToWarehouse", fields: [toWarehouseId], references: [id])
+
+    quantity Int
+}

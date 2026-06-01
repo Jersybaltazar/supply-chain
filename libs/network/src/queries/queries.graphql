@@ -1,0 +1,294 @@
+mutation Login($loginInput: LoginInput!) {
+  login(loginInput: $loginInput) {
+    user {
+      updatedAt
+      uid
+      name
+      image
+      createdAt
+      email
+    }
+    token
+  }
+}
+
+query user($where: UserWhereUniqueInput!) {
+  user(where: $where) {
+    uid
+    name
+    email
+  }
+}
+
+mutation registerWithProvider(
+  $registerWithProviderInput: RegisterWithProviderInput!
+) {
+  registerWithProvider(registerWithProviderInput: $registerWithProviderInput) {
+    user {
+      updatedAt
+      uid
+      name
+      image
+      email
+      createdAt
+    }
+    token
+  }
+}
+
+mutation registerWithCredentials(
+  $registerWithCredentialsInput: RegisterWithCredentialsInput!
+) {
+  registerWithCredentials(
+    registerWithCredentialsInput: $registerWithCredentialsInput
+  ) {
+    user {
+      uid
+      name
+      image
+      createdAt
+      updatedAt
+    }
+    token
+  }
+}
+
+query Manufacturer($where: ManufacturerWhereUniqueInput!) {
+  manufacturer(where: $where) {
+    uid
+    createdAt
+    user {
+      image
+      name
+    }
+    warehouses {
+      name
+      id
+    }
+    products {
+      name
+      id
+    }
+  }
+}
+query distributor($where: DistributorWhereUniqueInput!) {
+  distributor(where: $where) {
+    uid
+    createdAt
+    user {
+      image
+      name
+    }
+    warehouses {
+      name
+      id
+    }
+  }
+}
+query retailer($where: RetailerWhereUniqueInput!) {
+  retailer(where: $where) {
+    uid
+    createdAt
+    user {
+      image
+      name
+    }
+    warehouses {
+      name
+      id
+    }
+  }
+}
+
+mutation createManufacturer(
+  $createManufacturerInput: CreateManufacturerInput!
+) {
+  createManufacturer(createManufacturerInput: $createManufacturerInput) {
+    uid
+  }
+}
+
+fragment TransactionDetails on Transaction {
+  id
+  quantity
+  toWarehouse {
+    name
+    id
+  }
+  fromWarehouse {
+    name
+    id
+  }
+  createdAt
+  product {
+    name
+    image
+    id
+  }
+}
+
+fragment WarehouseDetails on Warehouse {
+  id
+  name
+  description
+  createdAt
+  location {
+    address
+    latitude
+    longitude
+  }
+  ins {
+    ...TransactionDetails
+  }
+  outs {
+    ...TransactionDetails
+  }
+  inventories {
+    quantity
+    product {
+      name
+      image
+      id
+    }
+  }
+}
+
+query myWarehouses(
+  $skip: Int
+  $take: Int
+  $orderBy: [WarehouseOrderByWithRelationInput!]
+  $where: WarehouseWhereInput
+) {
+  myWarehouses(skip: $skip, take: $take, orderBy: $orderBy, where: $where) {
+    ...WarehouseDetails
+  }
+}
+
+query warehouse($where: WarehouseWhereUniqueInput!) {
+  warehouse(where: $where) {
+    ...WarehouseDetails
+  }
+}
+
+mutation createWarehouse($createWarehouseInput: CreateWarehouseInput!) {
+  createWarehouse(createWarehouseInput: $createWarehouseInput) {
+    id
+  }
+}
+
+query myProducts(
+  $skip: Int
+  $take: Int
+  $orderBy: [ProductOrderByWithRelationInput!]
+  $where: ProductWhereInput
+) {
+  myProducts(skip: $skip, take: $take, orderBy: $orderBy, where: $where) {
+    id
+    name
+    image
+    createdAt
+    description
+  }
+}
+
+mutation createProduct($createProductInput: CreateProductInput!) {
+  createProduct(createProductInput: $createProductInput) {
+    id
+  }
+}
+
+query product($where: ProductWhereUniqueInput!) {
+  product(where: $where) {
+    name
+    description
+    createdAt
+    transactions {
+      id
+      quantity
+      toWarehouse {
+        id
+        location {
+          latitude
+          longitude
+          id
+        }
+      }
+      fromWarehouse {
+        id
+        location {
+          latitude
+          longitude
+          id
+        }
+      }
+    }
+    inventories {
+      id
+      warehouse {
+        manufacturer {
+          uid
+        }
+        distributor {
+          uid
+        }
+        retailer {
+          uid
+        }
+        location {
+          latitude
+          longitude
+          id
+        }
+      }
+      quantity
+    }
+  }
+}
+
+mutation createInventory($createInventoryInput: CreateInventoryInput!) {
+  createInventory(createInventoryInput: $createInventoryInput) {
+    id
+  }
+}
+
+mutation transferInventory(
+  $fromWarehouseId: Int!
+  $toWarehouseId: Int!
+  $productId: Int!
+  $quantity: Int!
+) {
+  transferInventory(
+    fromWarehouseId: $fromWarehouseId
+    toWarehouseId: $toWarehouseId
+    productId: $productId
+    quantity: $quantity
+  ) {
+    id
+  }
+}
+
+mutation reduceInventory(
+  $warehouseId: Int!
+  $productId: Int!
+  $quantity: Int!
+) {
+  reduceInventory(
+    warehouseId: $warehouseId
+    productId: $productId
+    quantity: $quantity
+  ) {
+    id
+  }
+}
+
+mutation createDistributor($createDistributorInput: CreateDistributorInput!) {
+  createDistributor(createDistributorInput: $createDistributorInput) {
+    uid
+  }
+}
+
+mutation createRetailer($createRetailerInput: CreateRetailerInput!) {
+  createRetailer(createRetailerInput: $createRetailerInput) {
+    uid
+  }
+}

@@ -1,0 +1,143 @@
+{
+  "Common": {
+    "manufacturer": "Manufacturer",
+    "distributor": "Distributor",
+    "retailer": "Retailer",
+    "warehouses": "Warehouses",
+    "products": "Products",
+    "panel": "Dashboard",
+    "new": "New",
+    "signIn": "Sign in",
+    "signOut": "Sign out",
+    "register": "Register",
+    "madeWith": "Made with",
+    "submit": "Submit",
+    "loading": "Loading..."
+  },
+  "Home": {
+    "titleLead": "Empower Your",
+    "titleHighlight": "Supply Chain",
+    "subtitle": "Connect, collaborate, and optimize your supply chain with SupplyChainX."
+  },
+  "Footer": {
+    "portfolioProject": "Portfolio project.",
+    "editorInChief": "Editor in chief",
+    "haveYouSeen": "Have you seen?",
+    "billboards": "Billboards",
+    "multiverse": "Multiverse",
+    "homeChefs": "Home chefs",
+    "carbonCredits": "Carbon credits",
+    "personalityVoting": "Personality voting"
+  },
+  "Menu": {
+    "manageProducts": "Manage products",
+    "manageWarehouses": "Manage warehouses"
+  },
+  "Dashboard": {
+    "manufacturerTitle": "Manufacturer dashboard",
+    "manufacturerDesc": "Create products and manage your warehouses. The supply chain flow starts here.",
+    "distributorTitle": "Distributor dashboard",
+    "distributorDesc": "Receive products from the manufacturer in your warehouses and transfer them to retailers.",
+    "retailerTitle": "Retailer dashboard",
+    "retailerDesc": "Receive products in your warehouses and record them as sold to the end customer."
+  },
+  "Warehouses": {
+    "title": "Warehouses",
+    "empty": "No warehouses found.",
+    "notFound": "Warehouse not found.",
+    "loading": "Loading warehouses."
+  },
+  "Products": {
+    "title": "Products",
+    "empty": "No products",
+    "notFound": "Product not found."
+  },
+  "LanguageSwitcher": {
+    "label": "Language",
+    "es": "Spanish",
+    "en": "English"
+  },
+  "Auth": {
+    "signInTitle": "Sign in",
+    "registerTitle": "Register",
+    "email": "Email",
+    "emailPlaceholder": "Enter your email",
+    "password": "Password",
+    "name": "Name",
+    "namePlaceholder": "Enter your name",
+    "submit": "Submit",
+    "signingIn": "Signing in...",
+    "creatingAccount": "Creating account...",
+    "alreadyHaveAccount": "Already have an account?",
+    "signInLink": "Sign in?",
+    "newToApp": "New to the app?",
+    "registerLink": "Register.",
+    "wrongCredentials": "Incorrect email or password.",
+    "accountCreated": "Account created! 🎉 Signing you in...",
+    "registerFailed": "Could not create the account. Please try again."
+  },
+  "Account": {
+    "creatingManufacturer": "Creating manufacturer account...",
+    "creatingDistributor": "Creating distributor account...",
+    "creatingRetailer": "Creating retailer account...",
+    "manufacturerNotFound": "Manufacturer account not found.",
+    "distributorNotFound": "Distributor account not found.",
+    "retailerNotFound": "Retailer account not found."
+  },
+  "Product": {
+    "create": "Create product",
+    "namePlaceholder": "Product name",
+    "descPlaceholder": "Product description",
+    "creating": "Creating...",
+    "created": "Product created successfully.",
+    "createFailed": "Could not create the product. Please try again.",
+    "flowTitle": "Product flow",
+    "flowDesc": "The product's journey across warehouses. Each marker is a warehouse with its current stock; the lines show transfers and their quantity.",
+    "legend": "Legend"
+  },
+  "Warehouse": {
+    "create": "Create warehouse",
+    "namePlaceholder": "Warehouse name",
+    "descPlaceholder": "Warehouse description",
+    "addressPlaceholder": "Warehouse address",
+    "creating": "Creating...",
+    "created": "Warehouse created successfully.",
+    "createFailed": "Could not create the warehouse. Please try again.",
+    "inventory": "Inventory",
+    "empty": "Empty.",
+    "ins": "Inbound",
+    "outs": "Outbound"
+  },
+  "Inventory": {
+    "quantity": "Quantity",
+    "warehouseIdReadonly": "Warehouse ID (read only)",
+    "productIdReadonly": "Product ID (read only)",
+    "targetWarehouseId": "Target warehouse ID",
+    "product": "Product",
+    "transfer": "Transfer",
+    "sell": "Sell",
+    "submit": "Submit",
+    "transferring": "Transferring...",
+    "selling": "Selling...",
+    "saving": "Saving...",
+    "transferSuccess": "Transfer completed successfully.",
+    "transferFailed": "The transfer failed. Check the stock and the target warehouse.",
+    "sellSuccess": "Sale recorded successfully.",
+    "sellFailed": "The sale failed. Make sure there is enough stock.",
+    "inventoryUpdated": "Inventory updated successfully.",
+    "inventoryFailed": "Could not update the inventory.",
+    "selectProduct": "Select a product...",
+    "loadingProducts": "Loading products..."
+  },
+  "Transactions": {
+    "id": "ID",
+    "date": "Date",
+    "name": "Name",
+    "quantity": "Quantity",
+    "from": "From",
+    "to": "To"
+  },
+  "Map": {
+    "searchPlace": "Search place..."
+  }
+}

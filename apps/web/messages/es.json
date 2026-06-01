@@ -1,0 +1,143 @@
+{
+  "Common": {
+    "manufacturer": "Fabricante",
+    "distributor": "Distribuidor",
+    "retailer": "Minorista",
+    "warehouses": "Almacenes",
+    "products": "Productos",
+    "panel": "Panel",
+    "new": "Nuevo",
+    "signIn": "Iniciar sesión",
+    "signOut": "Cerrar sesión",
+    "register": "Registrarse",
+    "madeWith": "Hecho con",
+    "submit": "Enviar",
+    "loading": "Cargando..."
+  },
+  "Home": {
+    "titleLead": "Impulsa el Recorrido de tu",
+    "titleHighlight": "Cadena de Suministro",
+    "subtitle": "Conecta, colabora y optimiza tu cadena de suministro con SupplyChainX."
+  },
+  "Footer": {
+    "portfolioProject": "Proyecto de portafolio.",
+    "editorInChief": "Editor en jefe",
+    "haveYouSeen": "¿Has visto?",
+    "billboards": "Vallas publicitarias",
+    "multiverse": "Multiverso",
+    "homeChefs": "Chefs en casa",
+    "carbonCredits": "Créditos de carbono",
+    "personalityVoting": "Votación de personalidad"
+  },
+  "Menu": {
+    "manageProducts": "Gestionar productos",
+    "manageWarehouses": "Gestionar almacenes"
+  },
+  "Dashboard": {
+    "manufacturerTitle": "Panel del fabricante",
+    "manufacturerDesc": "Crea productos y administra tus almacenes. Desde aquí inicia el flujo de la cadena de suministro.",
+    "distributorTitle": "Panel del distribuidor",
+    "distributorDesc": "Recibe productos del fabricante en tus almacenes y transfiérelos hacia los minoristas.",
+    "retailerTitle": "Panel del minorista",
+    "retailerDesc": "Recibe productos en tus almacenes y regístralos como vendidos al cliente final."
+  },
+  "Warehouses": {
+    "title": "Almacenes",
+    "empty": "No se encontraron almacenes.",
+    "notFound": "Almacén no encontrado.",
+    "loading": "Cargando almacenes."
+  },
+  "Products": {
+    "title": "Productos",
+    "empty": "Sin productos",
+    "notFound": "Producto no encontrado."
+  },
+  "LanguageSwitcher": {
+    "label": "Idioma",
+    "es": "Español",
+    "en": "Inglés"
+  },
+  "Auth": {
+    "signInTitle": "Iniciar sesión",
+    "registerTitle": "Registrarse",
+    "email": "Correo",
+    "emailPlaceholder": "Ingresa el correo",
+    "password": "Contraseña",
+    "name": "Nombre",
+    "namePlaceholder": "Ingresa el nombre",
+    "submit": "Enviar",
+    "signingIn": "Ingresando...",
+    "creatingAccount": "Creando cuenta...",
+    "alreadyHaveAccount": "¿Ya tienes una cuenta?",
+    "signInLink": "¿Iniciar sesión?",
+    "newToApp": "¿Nuevo en la aplicación?",
+    "registerLink": "Regístrate.",
+    "wrongCredentials": "Correo o contraseña incorrectos.",
+    "accountCreated": "¡Cuenta creada! 🎉 Iniciando sesión...",
+    "registerFailed": "No se pudo crear la cuenta. Inténtalo de nuevo."
+  },
+  "Account": {
+    "creatingManufacturer": "Creando cuenta de fabricante...",
+    "creatingDistributor": "Creando cuenta de distribuidor...",
+    "creatingRetailer": "Creando cuenta de minorista...",
+    "manufacturerNotFound": "Cuenta de fabricante no encontrada.",
+    "distributorNotFound": "Cuenta de distribuidor no encontrada.",
+    "retailerNotFound": "Cuenta de minorista no encontrada."
+  },
+  "Product": {
+    "create": "Crear producto",
+    "namePlaceholder": "Nombre del producto",
+    "descPlaceholder": "Descripción del producto",
+    "creating": "Creando...",
+    "created": "Producto creado correctamente.",
+    "createFailed": "No se pudo crear el producto. Inténtalo de nuevo.",
+    "flowTitle": "Flujo del producto",
+    "flowDesc": "Recorrido del producto entre almacenes. Cada marcador es un almacén con su stock actual; las líneas muestran las transferencias y su cantidad.",
+    "legend": "Leyenda"
+  },
+  "Warehouse": {
+    "create": "Crear almacén",
+    "namePlaceholder": "Nombre del almacén",
+    "descPlaceholder": "Descripción del almacén",
+    "addressPlaceholder": "Dirección del almacén",
+    "creating": "Creando...",
+    "created": "Almacén creado correctamente.",
+    "createFailed": "No se pudo crear el almacén. Inténtalo de nuevo.",
+    "inventory": "Inventario",
+    "empty": "Vacío.",
+    "ins": "Entradas",
+    "outs": "Salidas"
+  },
+  "Inventory": {
+    "quantity": "Cantidad",
+    "warehouseIdReadonly": "ID del almacén (solo lectura)",
+    "productIdReadonly": "ID del producto (solo lectura)",
+    "targetWarehouseId": "ID del almacén destino",
+    "product": "Producto",
+    "transfer": "Transferir",
+    "sell": "Vender",
+    "submit": "Enviar",
+    "transferring": "Transfiriendo...",
+    "selling": "Vendiendo...",
+    "saving": "Guardando...",
+    "transferSuccess": "Transferencia realizada correctamente.",
+    "transferFailed": "La transferencia falló. Verifica el stock y el almacén destino.",
+    "sellSuccess": "Venta registrada correctamente.",
+    "sellFailed": "La venta falló. Verifica que haya stock suficiente.",
+    "inventoryUpdated": "Inventario actualizado correctamente.",
+    "inventoryFailed": "No se pudo actualizar el inventario.",
+    "selectProduct": "Selecciona un producto...",
+    "loadingProducts": "Cargando productos..."
+  },
+  "Transactions": {
+    "id": "ID",
+    "date": "Fecha",
+    "name": "Nombre",
+    "quantity": "Cantidad",
+    "from": "Origen",
+    "to": "Destino"
+  },
+  "Map": {
+    "searchPlace": "Buscar lugar..."
+  }
+}
