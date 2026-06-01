@@ -2,6 +2,9 @@
   "name": "foundationx",
   "version": "1.0.0",
   "description": "",
+  "engines": {
+    "node": ">=18"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "pnpm exec nx run-many --target=build",
@@ -11,7 +14,7 @@
     "lint": "pnpm exec nx run-many --target=lint",
     "tsc": "pnpm exec nx run-many --target=tsc",
     "validate": "pnpm format:write && pnpm tsc && pnpm lint",
-    "prepare": "husky install"
+    "prepare": "husky install || true"
   },
   "keywords": [],
   "author": "",

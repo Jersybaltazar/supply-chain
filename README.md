@@ -4,13 +4,6 @@ Aplicación full-stack para **rastrear productos a lo largo de toda la cadena de
 
 > Proyecto desarrollado por **Jersy Baltazar** - Full-Stack Developer.
 
-<!-- TODO: reemplaza estos enlaces cuando hagas el deploy -->
-**Demo en vivo:** _(pendiente - Vercel)_ - **Código:** [github.com/Jersybaltazar/supply-chain-x](#)
-
-<!-- TODO: agrega un GIF o captura aquí. Sugerencia: graba el flujo crear producto, almacén, transferir y ver en el mapa -->
-![Demo de la aplicación](docs/demo.gif)
-
----
 
 ## El problema que resuelve
 
@@ -166,15 +159,18 @@ plataforma el directorio correcto y que use pnpm con corepack.
 
 1. New, Web Service, conecta el repositorio de GitHub.
 2. **Root Directory:** deja la raíz del repo (es un monorepo).
-3. **Build Command:**
+3. **Build Command** (NO uses `corepack enable`: el filesystem de Render es de
+   solo lectura y falla con `EROFS`. Render ya provee pnpm al detectar
+   `pnpm-lock.yaml`):
    ```bash
-   corepack enable && pnpm install && pnpm --filter @foundation/api exec prisma generate && pnpm --filter @foundation/api exec prisma migrate deploy && pnpm --filter @foundation/api build
+   pnpm install && pnpm --filter @foundation/api exec prisma generate && pnpm --filter @foundation/api exec prisma migrate deploy && pnpm --filter @foundation/api build
    ```
 4. **Start Command:**
    ```bash
    node apps/api/dist/main.js
    ```
 5. **Variables de entorno:** `DATABASE_URL`, `JWT_SECRET`, `INTERNAL_API_SECRET`.
+   Si Render no usa pnpm por defecto, añade `PNPM_VERSION=9.1.0`.
 6. La API queda expuesta en una URL tipo `https://tu-api.onrender.com`. El endpoint
    GraphQL es esa URL + `/graphql`.
 
@@ -195,7 +191,12 @@ o localmente apuntando `DATABASE_URL` a Supabase).
 5. Recuerda que `NEXTAUTH_SECRET` (Vercel) y `JWT_SECRET` (Render) deben tener el
    mismo valor, de lo contrario la API rechazará los tokens.
 
-### Orden recomendado
+> Importante: este es un proyecto **pnpm**. No debe existir `package-lock.json`
+> en el repo; si aparece, Vercel asumirá npm e instalará desde la raíz, fallando
+> con "No Next.js version detected". El campo `packageManager` del `package.json`
+> raíz fija pnpm para todas las plataformas.
+
+### Orden recomendado   
 
 1. Crear la base en Supabase y obtener `DATABASE_URL`.
 2. Desplegar la API en Render (con migraciones) y obtener su URL pública.

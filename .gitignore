@@ -4,5 +4,8 @@ dist
 .next
 .env
 
+# Este es un proyecto pnpm: nunca commitear lockfiles de npm/yarn
+package-lock.json
+yarn.lock
 
 .nx/cache
