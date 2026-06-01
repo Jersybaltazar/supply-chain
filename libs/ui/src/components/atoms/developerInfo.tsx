@@ -10,7 +10,7 @@ export const DeveloperInfo = async ({ className }: IDeveloperInfoProps) => {
   const t = await getTranslations('Common')
   return (
     <Link
-      href="https://www.iamkarthick.com"
+      href="https://portfolio-blond-nu.vercel.app/"
       target="_blank"
       className={cn('text-xs group ', className)}
     >
