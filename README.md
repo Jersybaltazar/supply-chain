@@ -160,10 +160,10 @@ plataforma el directorio correcto y que use pnpm con corepack.
 1. New, Web Service, conecta el repositorio de GitHub.
 2. **Root Directory:** deja la raíz del repo (es un monorepo).
 3. **Build Command** (NO uses `corepack enable`: el filesystem de Render es de
-   solo lectura y falla con `EROFS`. Render ya provee pnpm al detectar
-   `pnpm-lock.yaml`):
+   solo lectura y falla con `EROFS`. Se compila `@foundation/util` primero porque
+   la API la importa en runtime):
    ```bash
-   pnpm install && pnpm --filter @foundation/api exec prisma generate && pnpm --filter @foundation/api exec prisma migrate deploy && pnpm --filter @foundation/api build
+   pnpm install && pnpm --filter @foundation/util build && pnpm --filter @foundation/api exec prisma generate && pnpm --filter @foundation/api exec prisma migrate deploy && pnpm --filter @foundation/api build
    ```
 4. **Start Command:**
    ```bash
