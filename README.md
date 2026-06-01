@@ -127,7 +127,7 @@ un texto nuevo hay que añadir la clave en ambos archivos.
 
 | Variable | Descripción |
 |----------|-------------|
-| `NEXT_PUBLIC_API_URL` | URL del endpoint GraphQL de la API (ej. `https://tu-api.onrender.com/graphql`) |
+| `NEXT_PUBLIC_API_URL` | URL **base** de la API, SIN `/graphql` (el código lo agrega solo). Ej. `https://tu-api.onrender.com` |
 | `NEXT_PUBLIC_MAPBOX_TOKEN` | Token público de Mapbox |
 | `GOOGLE_CLIENT_ID` | OAuth de Google |
 | `GOOGLE_CLIENT_SECRET` | OAuth de Google |
@@ -173,8 +173,9 @@ plataforma el directorio correcto y que use pnpm con corepack.
 6. **Versión de Node:** el repo incluye un archivo `.node-version` con `20.18.1`.
    Es importante NO usar Node 24: NestJS 9 utiliza APIs que Node 24 ya removió y el
    build falla con `(0, util_1.isObject) is not a function`.
-7. La API queda expuesta en una URL tipo `https://tu-api.onrender.com`. El endpoint
-   GraphQL es esa URL + `/graphql`.
+7. La API queda expuesta en una URL tipo `https://tu-api.onrender.com`. En Vercel,
+   `NEXT_PUBLIC_API_URL` debe ser esa URL base **sin** `/graphql` (el código lo
+   agrega automáticamente).
 
 Nota: el `migrate deploy` del build aplica las migraciones en la base de Supabase.
 El seed no se ejecuta automáticamente; si quieres datos demo en producción, corre
@@ -192,8 +193,8 @@ o localmente apuntando `DATABASE_URL` a Supabase).
    Esto evita que la autodetección de Nx use `npm install --prefix=../..` (que falla
    con "No Next.js version detected", porque npm no entiende las dependencias
    `workspace:*`).
-4. **Variables de entorno:** `NEXT_PUBLIC_API_URL` (apuntando al `/graphql` de Render),
-   `NEXT_PUBLIC_MAPBOX_TOKEN`, `GOOGLE_CLIENT_ID`, `GOOGLE_CLIENT_SECRET`,
+4. **Variables de entorno:** `NEXT_PUBLIC_API_URL` (URL base de Render, **sin**
+   `/graphql`), `NEXT_PUBLIC_MAPBOX_TOKEN`, `GOOGLE_CLIENT_ID`, `GOOGLE_CLIENT_SECRET`,
    `NEXTAUTH_SECRET`, `NEXTAUTH_URL`.
 5. Recuerda que `NEXTAUTH_SECRET` (Vercel) y `JWT_SECRET` (Render) deben tener el
    mismo valor, de lo contrario la API rechazará los tokens.
