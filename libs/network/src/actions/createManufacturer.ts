@@ -17,5 +17,8 @@ export async function createManufacturer({ uid }: { uid: string }) {
 
   if (data?.createManufacturer) {
     revalidateTag(namedOperations.Query.Manufacturer)
+    return { ok: true as const }
   }
+
+  return { ok: false as const, error: error ?? 'unknown' }
 }

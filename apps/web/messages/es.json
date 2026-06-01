@@ -73,11 +73,12 @@
     "newToApp": "¿Nuevo en la aplicación?",
     "registerLink": "Regístrate.",
     "wrongCredentials": "Correo o contraseña incorrectos.",
-    "accountCreated": "¡Cuenta creada! 🎉 Iniciando sesión...",
+    "accountCreated": "Cuenta creada. Iniciando sesión...",
     "registerFailed": "No se pudo crear la cuenta. Inténtalo de nuevo."
   },
   "Account": {
     "creatingManufacturer": "Creando cuenta de fabricante...",
+    "createError": "No se pudo crear la cuenta de fabricante. Recarga la página o inténtalo de nuevo.",
     "creatingDistributor": "Creando cuenta de distribuidor...",
     "creatingRetailer": "Creando cuenta de minorista...",
     "manufacturerNotFound": "Cuenta de fabricante no encontrada.",

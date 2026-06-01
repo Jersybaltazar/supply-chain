@@ -73,11 +73,12 @@
     "newToApp": "New to the app?",
     "registerLink": "Register.",
     "wrongCredentials": "Incorrect email or password.",
-    "accountCreated": "Account created! 🎉 Signing you in...",
+    "accountCreated": "Account created. Signing you in...",
     "registerFailed": "Could not create the account. Please try again."
   },
   "Account": {
     "creatingManufacturer": "Creating manufacturer account...",
+    "createError": "Could not create the manufacturer account. Reload the page or try again.",
     "creatingDistributor": "Creating distributor account...",
     "creatingRetailer": "Creating retailer account...",
     "manufacturerNotFound": "Manufacturer account not found.",
